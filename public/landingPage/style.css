@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+    font-family: 'Montserrat';
+    font-weight: 500;
+}
+
+/* Navbar */
+.navbar {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #41228e;
+}
+
+.navbar img {
+    max-width: 100px;
+}
+
+h1 {
+    font-weight: bolder;
+}
+
+/* Hero Section */
+#hero-section {
+    margin-top: -30px;
+}
+
+#hero-text {
+    color: white;
+    font-size: 3vw;
+    font-weight: bolder;
+    padding: 3%;
+    text-shadow: 5px 5px 10px black;
+}
+
+#hero-cover {
+    background-color: rgba(0, 0, 0, 30%);
+}
+
+/* Profile Section */
+.profile-picture {
+    /* max-width: 200px; */
+    max-height: 300px;
+    border-radius: 20px;
+    border: 5px solid black;
+    box-shadow: 15px 15px #41228e;
+}
+
+/* Education */
+#edu-section {
+    border-radius: 20px;
+    border: 5px solid #41228e;
+}
+
+.edu-logo {
+    max-width: 100px;
+}
+
+.edu-desc {
+    color: #41228e;
+}
+
+.edu-container {
+    --clr: #41228e;
+    --outline: 2px solid #41228e;
+    /* outline: var(--outline); */
+    /* border: var(--outline); */
+    outline-offset: -2px;
+    transition: outline-width 200ms ease, outline-offset 200ms ease;
+}
+
+.edu-container:hover {
+    border-radius: 20px;
+    /*border: 3.5px solid #41228e;
+    background-color: #41228e;
+    color: white;
+    box-shadow:0px 0px 0px 5px #41228e inset;*/
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25); */
+    outline: var(--outline);
+    outline-width: 5px;
+    outline-offset: -5px;
+}
+
+/* Skill */
+#skill-container {
+    background-color: #41228e;
+    color: white;
+}
+
+/* Resume */
+#resume-section .resume-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #45505b;
+  }
+
+  #resume-section .resume-item {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #41228e;
+    position: relative;
+  }
+
+  #resume-section .resume-item h4 {
+    line-height: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #41228e;
+    margin-bottom: 10px;
+  }
+
+  #resume-section .resume-item h5 {
+    font-size: 16px;
+    background: #f7f8f9;
+    padding: 5px 15px;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  #resume-section .resume-item ul {
+    padding-left: 20px;
+  }
+
+  #resume-section .resume-item ul li {
+    padding-bottom: 10px;
+  }
+
+  #resume-section .resume-item:last-child {
+    padding-bottom: 0;
+  }
+
+  #resume-section .resume-item::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    left: -9px;
+    top: 0;
+    background: #fff;
+    border: 2px solid #41228e;
+  }
+
+/* Footer */
+footer {
+    background-color: #41228e;
+    color: white;
+}
+
+footer img {
+    max-width: 200px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* Login */
+#login-section {
+    height: 100vh;
+    background-color: rgb(243, 243, 243);
+    /* background-color: #41228e; */
+}
