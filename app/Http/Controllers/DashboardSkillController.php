@@ -59,7 +59,10 @@ class DashboardSkillController extends Controller
      */
     public function edit(Skill $skill)
     {
-        //
+        return view('dashboard.dashboardSkillEdit', [
+            'skill' => $skill,
+            'typeSkill' => ['Hardskill', 'Softskill']
+        ]);
     }
 
     /**
@@ -67,7 +70,17 @@ class DashboardSkillController extends Controller
      */
     public function update(Request $request, Skill $skill)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'value' => 'required',
+            'type' => 'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        Skill::where('id', $skill->id)->update($validatedData);
+
+        return redirect('/dashboard/skill')->with('succsess', 'Skill has been updated!');
     }
 
     /**

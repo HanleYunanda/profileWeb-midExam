@@ -1,4 +1,3 @@
-{{-- @dd($exp) --}}
 @extends('layouts.template-dashboard')
 
 @section('content')
@@ -17,12 +16,13 @@
 
       <div class="card">
         <div class="card-body">
-            <form method="post" action="/dashboard/skill/">
+            <form method="post" action="/dashboard/skill/{{ $skill->id }}">
+            @method('put')
             @csrf
                 <div class="container row">
                     <div class="col-md-8 my-1">
                         <label for="form-name" class="form-label">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="form-name" placeholder="Name" value="{{ old('name') }}" name="name">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="form-name" placeholder="Name" value="{{ old('name', $skill->name) }}" name="name">
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -34,7 +34,7 @@
                             <label for="form-value" class="form-label">Value</label>
                             <span><span id="value-percentage"></span>%</span>
                         </div>
-                        <input type="range" class="form-range" id="form-value" name="value" value="{{ old('value') }}">
+                        <input type="range" class="form-range" id="form-value" name="value" value="{{ old('value', $skill->value) }}">
                         @error('value')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -44,7 +44,7 @@
                         <select class="form-select" name="type" id="form-type">
                             <option></option>
                             @for ($i=0; $i<=1; $i++)
-                                @if (old('type') == $typeSkill[$i])
+                                @if (old('type', $skill->type) == $typeSkill[$i])
                                     <option value="{{ $typeSkill[$i] }}" selected>{{ $typeSkill[$i] }}</option>
                                 @else
                                     <option value="{{ $typeSkill[$i] }}">{{ $typeSkill[$i] }}</option>

@@ -32,6 +32,11 @@
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky pt-3 pb-5 px-3 d-flex flex-column justify-content-between h-100">
                 <ul class="nav flex-column">
+                    <li class="nav-item text-center">
+                        <a class="nav-link active}}" href="/dashboard">
+                        <h5>Dashboard</h5>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is("dashboard/profile*") ? 'active' : '' }}" href="/dashboard/profile">
                         <i class="bi bi-person-circle"></i>

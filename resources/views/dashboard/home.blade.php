@@ -14,7 +14,14 @@
 
       {{-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> --}}
 
-      <div class="container">Welcome</div>
+      <div class="container h-100">
+        <div class="card">
+            <div class="card-body p-5 text-center">
+              <h1 class="mb-5">Welcome to the Dashboard Admin</h1>
+              <h3>Here you can manage the data that will be displayed on your profile landing page</h3>
+            </div>
+          </div>
+      </div>
 
     </main>
 
