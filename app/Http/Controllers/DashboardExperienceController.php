@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Experience;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class DashboardExperienceController extends Controller
     public function create()
     {
         return view('dashboard.dashboardExperienceCreate', [
-            'typeExp' => ['Binus University', 'HIMTI']
+            'typeExp' => Category::all()
         ]);
     }
 
@@ -32,11 +33,12 @@ class DashboardExperienceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $rules = [
             'title' => 'required',
             'period' => 'required',
-            'type' => 'required',
-            'desc' => 'required'
+            'desc' => 'required',
+            'category_id' => 'required'
         ];
 
         $validatedData = $request->validate($rules);
@@ -61,7 +63,7 @@ class DashboardExperienceController extends Controller
     {
         return view('dashboard.dashboardExperienceEdit', [
             'exp' => $experience,
-            'typeExp' => ['Binus University', 'HIMTI']
+            'typeExp' => Category::all()
         ]);
     }
 
@@ -73,8 +75,8 @@ class DashboardExperienceController extends Controller
         $rules = [
             'title' => 'required',
             'period' => 'required',
-            'type' => 'required',
-            'desc' => 'required'
+            'desc' => 'required',
+            'category_id' => 'required'
         ];
 
         $validatedData = $request->validate($rules);

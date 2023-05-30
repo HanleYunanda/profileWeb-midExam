@@ -23,7 +23,7 @@
                       <th scope="col">No.</th>
                       <th scope="col">Title</th>
                       <th scope="col">Period</th>
-                      <th scope="col">Type</th>
+                      <th scope="col">Cartegory</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -33,7 +33,7 @@
                         <th>{{ $loop->iteration }}</th>
                         <td>{{ $exp->title }}</td>
                         <td>{{ $exp->period }}</td>
-                        <td>{{ $exp->type }}</td>
+                        <td>{{ $exp->category->name }}</td>
                         <td>
                             <a href="/dashboard/experience/{{ $exp->id }}/edit"><button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button></a>
                             <form action="/dashboard/experience/{{ $exp->id }}" method="post" class="d-inline">

@@ -39,19 +39,19 @@
                         @enderror
                     </div>
                     <div class="col-md-8">
-                        <label for="form-type" class="form-label">Type</label>
+                        <label for="form-category" class="form-label">Category</label>
 
-                        <select class="form-select" name="type" id="form-type">
+                        <select class="form-select" name="category_id" id="form-category">
                             <option></option>
                             @for ($i=0; $i<=1; $i++)
-                                @if (old('type') == $typeExp[$i])
-                                    <option value="{{ $typeExp[$i] }}" selected>{{ $typeExp[$i] }}</option>
+                                @if (old('category') == $typeExp[$i]->id)
+                                    <option value="1" selected>{{ $typeExp[$i]->name }}</option>
                                 @else
-                                    <option value="{{ $typeExp[$i] }}">{{ $typeExp[$i] }}</option>
+                                    <option value="2">{{ $typeExp[$i]->name }}</option>
                                 @endif
                             @endfor
                           </select>
-                          @error('type')
+                          @error('category')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>

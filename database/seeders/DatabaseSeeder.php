@@ -134,32 +134,40 @@ class DatabaseSeeder extends Seeder
             'type' => 'Softskill'
         ]);
 
+        \App\Models\Category::create([
+            'name' => 'Binus University'
+        ]);
+
+        \App\Models\Category::create([
+            'name' => 'HIMTI'
+        ]);
+
         \App\Models\Experience::create([
             'title' => 'Freshmen Leader',
             'period' => 'July 2022-September 2022',
             'desc' => '<li>Maintaining the smooth running of the First Year Program (FYP) activities which took place before semester 1 started.</li><li>Responsible for and leading Freshmen during FYP activities.</li><li>Guiding and assisting Freshmen while participating in FYP activities.</li><li>Skills: Critical Thinking, Problem Solving, Public Speaking, Leadership</li>',
-            'type' => 'Binus University'
+            'category_id' => 1
         ]);
 
         \App\Models\Experience::create([
             'title' => 'Freshmen Partner',
             'period' => 'September 2022-Present',
             'desc' => '<li>Maintain the smooth implementation of Freshmen mentoring activities in semester 1 and semester 2.</li><li>Responsible for assisting Freshmen during their first year.</li><li>Helping and guiding Freshmen in the first year of college.</li><li>Skills: Adaptation, Critical Thinking, Management, Public Relations</li>',
-            'type' => 'Binus University'
+            'category_id' => 1
         ]);
 
         \App\Models\Experience::create([
             'title' => 'Activist of Resource Development Division',
             'period' => 'February 2022 - January 2023',
             'desc' => '<li>In charge of organizing activities related to the development of the ability of members of the organization</li><li>Skills: Organizational Development, Management, Public Relations, Public Speaking, Time Management, Leadership</li>',
-            'type' => 'HIMTI'
+            'category_id' => 2
         ]);
 
         \App\Models\Experience::create([
             'title' => 'Committee Digifest 2022',
             'period' => 'May 2022 - June 2022',
             'desc' => '<li>Provide event equipment</li><li>Borrow the necessary space and equipment</li><li>Borrowed zoom for streaming seminar needs</li><li>Become MC for the event</li><li>Skills: Event Management, Event Planning, Teamwork, Public Speaking</li>',
-            'type' => 'HIMTI'
+            'category_id' => 2
         ]);
 
         \App\Models\Message::create([

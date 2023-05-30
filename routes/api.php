@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/experiences', [\App\Http\Controllers\ApiExperienceController::class, 'index']);
+Route::post('experiences', [\App\Http\Controllers\ApiExperienceController::class, 'store']);

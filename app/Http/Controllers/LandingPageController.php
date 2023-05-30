@@ -17,8 +17,8 @@ class LandingPageController extends Controller
             'educations' => Education::all(),
             'hardskills' => Skill::where('type', 'Hardskill')->get(),
             'softskills' => Skill::where('type', 'Softskill')->get(),
-            'expBinus' => Experience::where('type', 'Binus University')->get(),
-            'expHimti' => Experience::where('type', 'HIMTI')->get()
+            'expBinus' => Experience::where('category_id', 1)->get(),
+            'expHimti' => Experience::where('category_id', 2)->get()
         ]);
     }
 
