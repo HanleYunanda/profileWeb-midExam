@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Experience;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\AddExperienceRequest;
 
-class ApiExperienceController extends Controller
+class ApiCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $experiences = Experience::all();
+        $categories = Category::all();
         return (new ApiRule)->responsemessage(
-            "Experiences data",
-            $experiences,
+            "Categories data",
+            $categories,
             200
         );
     }
@@ -33,14 +32,10 @@ class ApiExperienceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AddExperienceRequest $request)
+    public function store(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'period' => 'required',
-            'desc' => 'required',
-            'category_id' => 'required|exists:categories,id'
+            'name' => 'required|string',
         ]);
 
         if($validator->fails()) {
@@ -50,15 +45,15 @@ class ApiExperienceController extends Controller
                 422
             );
         } else {
-            if($experience = Experience::create($validator->validated())) {
+            if($category = Category::create($validator->validated())) {
                 return (new ApiRule)->responsemessage(
-                    "New experience created successfully",
-                    $experience,
+                    "New Category created successfully",
+                    $category,
                     200
                 );
             } else {
                 return (new ApiRule)->responsemessage(
-                    "Failed to create experience",
+                    "Failed to create Category",
                     null,
                     500
                 );
@@ -71,18 +66,18 @@ class ApiExperienceController extends Controller
      */
     public function show($id)
     {
-        $experience = Experience::find($id);
+        $category = Category::find($id);
 
-        if(!$experience) {
+        if(!$category) {
             return (new ApiRule)->responsemessage(
-                "Experience not found",
+                "Category not found",
                 null,
                 404
             );
         } else {
             return (new ApiRule)->responsemessage(
-                "Experience data",
-                $experience,
+                "Category data",
+                $category,
                 200
             );
         }
@@ -91,7 +86,7 @@ class ApiExperienceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    // public function edit(string $id)
+    // public function edit(Category $category)
     // {
 
     // }
@@ -99,19 +94,16 @@ class ApiExperienceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'period' => 'required',
-            'desc' => 'required',
-            'category_id' => 'required|exists:categories,id'
+            'name' => 'required|string',
         ]);
 
-        $experience = Experience::find($id);
-        if(!$experience) {
+        $category = Category::find($id);
+        if(!$category) {
             return (new ApiRule)->responsemessage(
-                "Experience data not found",
+                "Category data not found",
                 null,
                 404
             );
@@ -124,15 +116,15 @@ class ApiExperienceController extends Controller
                 422
             );
         } else {
-            if($experience->update($validator->validated())) {
+            if($category->update($validator->validated())) {
                 return (new ApiRule)->responsemessage(
-                    "Experience data updated",
-                    $experience,
+                    "Category data updated",
+                    $category,
                     200
                 );
             } else {
                 return (new ApiRule)->responsemessage(
-                    "Failed to update experience data",
+                    "Failed to update category data",
                     null,
                     500
                 );
@@ -143,27 +135,27 @@ class ApiExperienceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $experience = Experience::find($id);
+        $category = Category::find($id);
 
-        if (!$experience){
+        if (!$category){
             return (new ApiRule)->responsemessage(
-                "Experience data not found",
+                "Category data not found",
                 null,
                 404
             );
         }
 
-        if ($experience -> delete()){
+        if ($category -> delete()){
             return (new ApiRule)->responsemessage(
-                "Experience data deleted",
-                $experience,
+                "Category data deleted",
+                $category,
                 200
             );
         } else {
             return (new ApiRule)->responsemessage(
-                "Failed to delete experience data",
+                "Failed to delete category data",
                 null,
                 500
             );

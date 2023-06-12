@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiCategoryController;
+use App\Http\Controllers\ApiExperienceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,9 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/experiences', [\App\Http\Controllers\ApiExperienceController::class, 'index']);
-Route::post('experiences', [\App\Http\Controllers\ApiExperienceController::class, 'store']);
+// Route::get('/experiences', [\App\Http\Controllers\ApiExperienceController::class, 'index']);
+// Route::post('experiences', [\App\Http\Controllers\ApiExperienceController::class, 'store']);
+
+Route::apiResource('/experience', ApiExperienceController::class);
+Route::apiResource('/category', ApiCategoryController::class);
+
