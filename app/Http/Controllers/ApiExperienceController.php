@@ -6,6 +6,7 @@ use App\Models\Experience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\AddExperienceRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ApiExperienceController extends Controller
 {
@@ -14,6 +15,15 @@ class ApiExperienceController extends Controller
      */
     public function index()
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
         $experiences = Experience::all();
         return (new ApiRule)->responsemessage(
             "Experiences data",
@@ -35,6 +45,15 @@ class ApiExperienceController extends Controller
      */
     public function store(AddExperienceRequest $request)
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
@@ -71,6 +90,16 @@ class ApiExperienceController extends Controller
      */
     public function show($id)
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
+
         $experience = Experience::find($id);
 
         if(!$experience) {
@@ -101,6 +130,16 @@ class ApiExperienceController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
+
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'period' => 'required',
@@ -145,6 +184,16 @@ class ApiExperienceController extends Controller
      */
     public function destroy(string $id)
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
+
         $experience = Experience::find($id);
 
         if (!$experience){

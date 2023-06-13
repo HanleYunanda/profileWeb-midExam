@@ -23,8 +23,10 @@ class DashboardExperienceController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
         return view('dashboard.dashboardExperienceCreate', [
-            'typeExp' => Category::all()
+            'typeExp' => $categories,
+            'count' => $categories->count(),
         ]);
     }
 
@@ -61,9 +63,11 @@ class DashboardExperienceController extends Controller
      */
     public function edit(Experience $experience)
     {
+        $categories = Category::all();
         return view('dashboard.dashboardExperienceEdit', [
             'exp' => $experience,
-            'typeExp' => Category::all()
+            'typeExp' => $categories,
+            'count' => $categories->count(),
         ]);
     }
 

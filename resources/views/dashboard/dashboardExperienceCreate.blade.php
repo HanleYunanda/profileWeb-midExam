@@ -43,11 +43,11 @@
 
                         <select class="form-select" name="category_id" id="form-category">
                             <option></option>
-                            @for ($i=0; $i<=1; $i++)
+                            @for ($i=0; $i<=$count-1; $i++)
                                 @if (old('category') == $typeExp[$i]->id)
-                                    <option value="1" selected>{{ $typeExp[$i]->name }}</option>
+                                    <option value="{{ $typeExp[$i]->id }}" selected>{{ $typeExp[$i]->name }}</option>
                                 @else
-                                    <option value="2">{{ $typeExp[$i]->name }}</option>
+                                    <option value="{{ $typeExp[$i]->id }}">{{ $typeExp[$i]->name }}</option>
                                 @endif
                             @endfor
                           </select>

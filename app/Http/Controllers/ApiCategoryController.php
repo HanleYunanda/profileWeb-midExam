@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ApiCategoryController extends Controller
@@ -13,6 +14,16 @@ class ApiCategoryController extends Controller
      */
     public function index()
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
+
         $categories = Category::all();
         return (new ApiRule)->responsemessage(
             "Categories data",
@@ -34,6 +45,16 @@ class ApiCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
         ]);
@@ -66,6 +87,16 @@ class ApiCategoryController extends Controller
      */
     public function show($id)
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
+
         $category = Category::find($id);
 
         if(!$category) {
@@ -96,6 +127,16 @@ class ApiCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
         ]);
@@ -137,6 +178,16 @@ class ApiCategoryController extends Controller
      */
     public function destroy($id)
     {
+        try {
+            Auth::guard('api')->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $err) {
+            return (new ApiRule)->responsemessage(
+                "Action not authorized",
+                null,
+                401
+            );
+        }
+
         $category = Category::find($id);
 
         if (!$category){

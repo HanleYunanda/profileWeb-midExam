@@ -62,6 +62,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ Request::is("dashboard/category*") ? 'active' : '' }}" href="/dashboard/category">
+                        <i class="bi bi-tag"></i>
+                        Categories
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ Request::is("dashboard/message*") ? 'active' : '' }}" href="/dashboard/message">
                         <i class="bi bi-chat-left-dots"></i>
                         Messages

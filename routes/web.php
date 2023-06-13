@@ -6,6 +6,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\DashboardSkillController;
 use App\Http\Controllers\DashboardProfileController;
+use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\DashboardEducationController;
 use App\Http\Controllers\DashboardExperienceController;
 
@@ -34,6 +35,7 @@ Route::get('/dashboard', function() {
 Route::resource('/dashboard/profile', DashboardProfileController::class)->middleware('auth');
 Route::resource('/dashboard/education', DashboardEducationController::class)->middleware('auth');
 Route::resource('/dashboard/experience', DashboardExperienceController::class)->middleware('auth');
+Route::resource('/dashboard/category', DashboardCategoryController::class)->middleware('auth');
 Route::resource('/dashboard/skill', DashboardSkillController::class)->middleware('auth');
 Route::resource('/dashboard/message', MessageController::class)->middleware('auth');
 
